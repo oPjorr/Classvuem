@@ -34,7 +34,7 @@ let menuItems = ref([
     name: "Your Library",
     iconString: "library",
     pageUrl: "/library",
-    to: "/",
+    to: "/library",
   },
 ]);
 </script>

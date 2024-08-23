@@ -1,5 +1,21 @@
 <script setup>
+import { onMounted, ref } from "vue";
+
 import CategorySelect from "../components/CategorySelect.vue";
+import apiClient from "../services/SpotifyService";
+
+const categories = ref({});
+
+onMounted(async () => {
+  try {
+    const categoriesResponse = await apiClient.get("/browse/categories", {
+      params: { locale: "pt_BR" },
+    });
+    categories.value = categoriesResponse.data.categories;
+  } catch (error) {
+    console.error("Erro ao buscar dados das categorias:", error);
+  }
+});
 </script>
 
 <template>
@@ -16,166 +32,13 @@ import CategorySelect from "../components/CategorySelect.vue";
     <div
       class="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6"
     >
-      <CategorySelect
-        category="Podcasts"
-        image="https://picsum.photos/id/40/300/300"
-      />
-      <CategorySelect
-        category="Audiobooks"
-        image="https://picsum.photos/id/45/300/300"
-      />
-      <CategorySelect
-        category="Made For You"
-        image="https://picsum.photos/id/76/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/56/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/25/300/300"
-      />
-      <CategorySelect
-        category="Podcasts"
-        image="https://picsum.photos/id/103/300/300"
-      />
-      <CategorySelect
-        category="Audiobooks"
-        image="https://picsum.photos/id/244/300/300"
-      />
-      <CategorySelect
-        category="Made For You"
-        image="https://picsum.photos/id/202/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/101/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/120/300/300"
-      />
-      <CategorySelect
-        category="Podcasts"
-        image="https://picsum.photos/id/40/300/300"
-      />
-      <CategorySelect
-        category="Audiobooks"
-        image="https://picsum.photos/id/45/300/300"
-      />
-      <CategorySelect
-        category="Made For You"
-        image="https://picsum.photos/id/76/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/56/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/25/300/300"
-      />
-      <CategorySelect
-        category="Podcasts"
-        image="https://picsum.photos/id/103/300/300"
-      />
-      <CategorySelect
-        category="Audiobooks"
-        image="https://picsum.photos/id/244/300/300"
-      />
-      <CategorySelect
-        category="Made For You"
-        image="https://picsum.photos/id/202/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/101/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/120/300/300"
-      />
-      <CategorySelect
-        category="Podcasts"
-        image="https://picsum.photos/id/40/300/300"
-      />
-      <CategorySelect
-        category="Audiobooks"
-        image="https://picsum.photos/id/45/300/300"
-      />
-      <CategorySelect
-        category="Made For You"
-        image="https://picsum.photos/id/76/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/56/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/25/300/300"
-      />
-      <CategorySelect
-        category="Podcasts"
-        image="https://picsum.photos/id/103/300/300"
-      />
-      <CategorySelect
-        category="Audiobooks"
-        image="https://picsum.photos/id/244/300/300"
-      />
-      <CategorySelect
-        category="Made For You"
-        image="https://picsum.photos/id/202/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/101/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/120/300/300"
-      />
-      <CategorySelect
-        category="Podcasts"
-        image="https://picsum.photos/id/40/300/300"
-      />
-      <CategorySelect
-        category="Audiobooks"
-        image="https://picsum.photos/id/45/300/300"
-      />
-      <CategorySelect
-        category="Made For You"
-        image="https://picsum.photos/id/76/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/56/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/25/300/300"
-      />
-      <CategorySelect
-        category="Podcasts"
-        image="https://picsum.photos/id/103/300/300"
-      />
-      <CategorySelect
-        category="Audiobooks"
-        image="https://picsum.photos/id/244/300/300"
-      />
-      <CategorySelect
-        category="Made For You"
-        image="https://picsum.photos/id/202/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/101/300/300"
-      />
-      <CategorySelect
-        category="New Release"
-        image="https://picsum.photos/id/120/300/300"
-      />
+      <div v-for="(category, i) in categories.items" :key="i">
+        <CategorySelect
+          v-if="category.icons"
+          :category="category.name"
+          :image="category.icons[0].url"
+        />
+      </div>
     </div>
   </div>
 </template>
