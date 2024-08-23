@@ -18,9 +18,24 @@ let playlists = ref([
 ]);
 
 let menuItems = ref([
-  { name: "Home", iconString: "home", pageUrl: "/", to: "/" },
-  { name: "Search", iconString: "search", pageUrl: "/search", to: "/" },
-  { name: "Your Library", iconString: "library", pageUrl: "/library", to: "/" },
+  {
+    name: "Home",
+    iconString: "home",
+    pageUrl: "/",
+    to: "/",
+  },
+  {
+    name: "Search",
+    iconString: "search",
+    pageUrl: "/search",
+    to: "/search",
+  },
+  {
+    name: "Your Library",
+    iconString: "library",
+    pageUrl: "/library",
+    to: "/",
+  },
 ]);
 </script>
 
