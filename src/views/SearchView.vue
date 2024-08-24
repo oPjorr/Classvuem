@@ -4,6 +4,7 @@ import { onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import CategorySelect from "../components/CategorySelect.vue";
 import { useCategoryStore } from "../stores/category";
+import { useLyricStore } from "../stores/lyric";
 
 const categoryStore = useCategoryStore();
 
@@ -11,6 +12,12 @@ const { categories } = storeToRefs(categoryStore);
 const { fetchCategories } = categoryStore;
 
 onMounted(fetchCategories);
+
+// Testing sMusixmatch Lyrics API Call
+const lyricStore = useLyricStore();
+
+const { lyrics } = storeToRefs(lyricStore);
+const { fetchLyrics } = lyricStore;
 </script>
 
 <template>
@@ -18,6 +25,7 @@ onMounted(fetchCategories);
     <button
       type="button"
       class="text-white text-2xl font-semibold hover:underline cursor-pointer"
+      @click="fetchLyrics('Vacation Forever', 'Violent Soho')"
     >
       Browse all
     </button>

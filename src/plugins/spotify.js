@@ -2,15 +2,15 @@ import axios from "axios";
 
 import { useTokenStore } from "../stores/token.js";
 
-const apiClient = axios.create({
-  baseURL: "https://api.spotify.com/v1",
+const spotifyClient = axios.create({
+  baseURL: "/api/spotify",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
   },
 });
 
-apiClient.interceptors.request.use(async (config) => {
+spotifyClient.interceptors.request.use(async (config) => {
   const tokenStore = useTokenStore();
   await tokenStore.refreshToken();
 
@@ -19,4 +19,4 @@ apiClient.interceptors.request.use(async (config) => {
   return config;
 });
 
-export default apiClient;
+export default spotifyClient;

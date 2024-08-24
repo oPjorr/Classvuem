@@ -1,8 +1,8 @@
-import apiClient from "../plugins/axios";
+import spotifyClient from "../plugins/spotify";
 
 class CategoryService {
   async get() {
-    const { data } = await apiClient.get("/browse/categories", {
+    const { data } = await spotifyClient.get("/browse/categories", {
       params: { locale: "pt_BR" },
     });
 
