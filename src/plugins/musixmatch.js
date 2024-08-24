@@ -5,7 +5,6 @@ const musixmatchClient = axios.create({
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
-    apikey: import.meta.env.VITE_MUSIXMATCH_API_KEY,
   },
 });
 

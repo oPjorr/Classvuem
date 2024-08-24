@@ -10,11 +10,16 @@ export const useLyricStore = defineStore(
     async function fetchLyrics(track, artist) {
       try {
         const lyricsResponse = await LyricService.get(track, artist);
-        lyrics.value = lyricsResponse;
-        console.log(lyrics.value); // See the Lyrics via Console
+        lyrics.value = lyricsResponse.message.body.lyrics.lyrics_body;
+
+        if (lyrics.value === "") {
+          lyrics.value = "Lyrics is unavailable";
+        }
 
         return Promise.resolve(lyricsResponse);
       } catch (error) {
+        lyrics.value = "Lyrics is unavailable";
+
         return Promise.reject(error);
       }
     }

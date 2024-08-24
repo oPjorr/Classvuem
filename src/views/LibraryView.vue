@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, onUnmounted } from "vue";
 
 import ClockTimeThreeOutline from "vue-material-design-icons/ClockTimeThreeOutline.vue";
 import DotsHorizontal from "vue-material-design-icons/DotsHorizontal.vue";
@@ -9,6 +9,7 @@ import SongRow from "../components/SongRow.vue";
 
 import { storeToRefs } from "pinia";
 import { useAlbumStore } from "../stores/album";
+import { useLyricStore } from "../stores/lyric";
 
 const albumStore = useAlbumStore();
 
@@ -28,12 +29,22 @@ const albumIds = ref([
   "3bhFoH4PFnY4ifK4981U8X", // *NSYNC
 ]);
 
-onMounted(() => fetchAlbum(albumIds.value[Math.floor(Math.random() * 10)]));
+onMounted(() => {
+  fetchAlbum(albumIds.value[Math.floor(Math.random() * 10)]);
+  lyricStore.$reset();
+});
+onUnmounted(albumStore.$reset);
 
 function formatDate(value) {
   if (value.length === 4) return value;
   return new Date(value).toLocaleDateString();
 }
+
+// Testing Musixmatch Lyrics API Call
+const lyricStore = useLyricStore();
+
+const { lyrics } = storeToRefs(lyricStore);
+const { fetchLyrics } = lyricStore;
 </script>
 
 <template>
@@ -88,6 +99,23 @@ function formatDate(value) {
       </div>
     </div>
 
+    <div v-if="album.tracks">
+      <button
+        type="button"
+        class="my-4 text-white text-2xl font-semibold hover:underline cursor-pointer"
+        @click="
+          fetchLyrics(
+            album.tracks.items[0].name,
+            album.tracks.items[0].artists[0].name
+          )
+        "
+      >
+        Lyrics
+      </button>
+      <section v-if="lyrics" class="text-white" style="white-space: pre-line">
+        {{ lyrics }}
+      </section>
+    </div>
     <div class="mt-6"></div>
     <div class="flex items-center justify-between px-5 pt-2">
       <div class="flex items-center justify-between text-gray-400">
