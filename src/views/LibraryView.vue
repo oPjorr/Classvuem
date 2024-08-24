@@ -7,9 +7,14 @@ import Heart from "vue-material-design-icons/Heart.vue";
 import Play from "vue-material-design-icons/Play.vue";
 import SongRow from "../components/SongRow.vue";
 
-import apiClient from "../services/SpotifyService";
+import { storeToRefs } from "pinia";
+import { useAlbumStore } from "../stores/album";
 
-const album = ref({});
+const albumStore = useAlbumStore();
+
+const { album } = storeToRefs(albumStore);
+const { fetchAlbum } = albumStore;
+
 const albumIds = ref([
   "6hPkbAV3ZXpGZBGUvL6jVM", // Linkin Park
   "5TG8nNzWlr4lsL6XBURDs0", // Skrillex
@@ -23,24 +28,12 @@ const albumIds = ref([
   "3bhFoH4PFnY4ifK4981U8X", // *NSYNC
 ]);
 
+onMounted(() => fetchAlbum(albumIds.value[Math.floor(Math.random() * 10)]));
+
 function formatDate(value) {
   if (value.length === 4) return value;
   return new Date(value).toLocaleDateString();
 }
-
-onMounted(async () => {
-  try {
-    const albumResponse = await apiClient.get(
-      `/albums/${albumIds.value[Math.floor(Math.random() * 10)]}`,
-      {
-        params: { market: "BR" },
-      }
-    );
-    album.value = albumResponse.data;
-  } catch (error) {
-    console.error("Erro ao buscar dados do album:", error);
-  }
-});
 </script>
 
 <template>

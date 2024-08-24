@@ -1,21 +1,16 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 
+import { storeToRefs } from "pinia";
 import CategorySelect from "../components/CategorySelect.vue";
-import apiClient from "../services/SpotifyService";
+import { useCategoryStore } from "../stores/category";
 
-const categories = ref({});
+const categoryStore = useCategoryStore();
 
-onMounted(async () => {
-  try {
-    const categoriesResponse = await apiClient.get("/browse/categories", {
-      params: { locale: "pt_BR" },
-    });
-    categories.value = categoriesResponse.data.categories;
-  } catch (error) {
-    console.error("Erro ao buscar dados das categorias:", error);
-  }
-});
+const { categories } = storeToRefs(categoryStore);
+const { fetchCategories } = categoryStore;
+
+onMounted(fetchCategories);
 </script>
 
 <template>

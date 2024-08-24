@@ -1,23 +1,29 @@
 <script setup>
 import { ref } from "vue";
+
 import ChevronDown from "vue-material-design-icons/ChevronDown.vue";
 import ChevronLeft from "vue-material-design-icons/ChevronLeft.vue";
 import ChevronRight from "vue-material-design-icons/ChevronRight.vue";
 import ChevronUp from "vue-material-design-icons/ChevronUp.vue";
+
 import { RouterLink, RouterView } from "vue-router";
 import MenuItem from "./components/MenuItem.vue";
 
-let openMenu = ref(false);
-let username = ref("Ricardo André");
+const openMenu = ref(false);
 
-let playlists = ref([
+const username = ref("Ricardo André");
+const profilePicture = ref(
+  "https://avatars.githubusercontent.com/u/80722562?s=96&v=4"
+);
+
+const playlists = ref([
   "My Playlist",
   "My Playlist",
   "My Playlist",
   "My Playlist",
 ]);
 
-let menuItems = ref([
+const menuItems = ref([
   {
     name: "Home",
     iconString: "home",
@@ -66,11 +72,7 @@ let menuItems = ref([
         class="bg-black hover:bg-[#282828] rounded-full p-0.5 mr-8 mt-0.5 cursor-pointer"
       >
         <div class="flex items-center">
-          <img
-            class="rounded-full"
-            width="27"
-            src="https://avatars.githubusercontent.com/u/80722562?s=96&v=4"
-          />
+          <img class="rounded-full" width="27" :src="profilePicture" />
           <div class="text-white text-[14px] ml-1.5 font-semibold">
             {{ username }}
           </div>

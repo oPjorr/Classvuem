@@ -2,8 +2,8 @@ import axios from "axios";
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
-export const useApiStore = defineStore(
-  "api",
+export const useTokenStore = defineStore(
+  "token",
   () => {
     const token = ref(null);
     const expiration = ref(null);
@@ -43,10 +43,8 @@ export const useApiStore = defineStore(
     });
 
     function $reset() {
-      isPlaying.value = false;
-      audio.value = null;
-      currentArtist.value = null;
-      currentTrack.value = null;
+      token.value = null;
+      expiration.value = null;
     }
 
     return {

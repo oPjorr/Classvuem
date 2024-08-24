@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { useApiStore } from "../stores/api.js";
+import { useTokenStore } from "../stores/token.js";
 
 const apiClient = axios.create({
   baseURL: "https://api.spotify.com/v1",
@@ -11,10 +11,10 @@ const apiClient = axios.create({
 });
 
 apiClient.interceptors.request.use(async (config) => {
-  const apiStore = useApiStore();
-  await apiStore.refreshToken();
+  const tokenStore = useTokenStore();
+  await tokenStore.refreshToken();
 
-  config.headers.Authorization = `Bearer ${apiStore.token}`;
+  config.headers.Authorization = `Bearer ${tokenStore.token}`;
 
   return config;
 });
