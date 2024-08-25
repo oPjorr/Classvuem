@@ -23,7 +23,6 @@ export const useSearchStore = defineStore(
       try {
         const searchResponse = await SearchService.getAlbums(query);
         results.value = searchResponse;
-        console.log(searchResponse); // See the results via Console
 
         return Promise.resolve(searchResponse);
       } catch (error) {
@@ -35,7 +34,6 @@ export const useSearchStore = defineStore(
       try {
         const searchResponse = await SearchService.getArtists(query);
         results.value = searchResponse;
-        console.log(searchResponse); // See the results via Console
 
         return Promise.resolve(searchResponse);
       } catch (error) {
@@ -47,7 +45,6 @@ export const useSearchStore = defineStore(
       try {
         const searchResponse = await SearchService.getSongs(query);
         results.value = searchResponse;
-        console.log(searchResponse); // See the results via Console
 
         return Promise.resolve(searchResponse);
       } catch (error) {
@@ -59,7 +56,6 @@ export const useSearchStore = defineStore(
       try {
         const searchResponse = await SearchService.getPlaylists(query);
         results.value = searchResponse;
-        console.log(searchResponse); // See the results via Console
 
         return Promise.resolve(searchResponse);
       } catch (error) {
@@ -71,7 +67,6 @@ export const useSearchStore = defineStore(
       try {
         const searchResponse = await SearchService.getShows(query);
         results.value = searchResponse;
-        console.log(searchResponse); // See the results via Console
 
         return Promise.resolve(searchResponse);
       } catch (error) {

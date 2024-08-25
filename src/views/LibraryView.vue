@@ -37,6 +37,7 @@ onMounted(() => {
 onUnmounted(albumStore.$reset);
 
 function formatDate(value) {
+  if (!value) return;
   if (value.length === 4) return value;
   return new Date(value).toLocaleDateString();
 }
@@ -59,9 +60,9 @@ const { fetchLyrics } = lyricStore;
 
     <div class="py-1.5"></div>
     <div class="flex items-center w-full relative h-full">
-      <div v-if="album.images">
+      <section v-if="album.images">
         <img width="140" :src="album.images[0].url" />
-      </div>
+      </section>
 
       <div class="w-full ml-5">
         <div
@@ -74,11 +75,11 @@ const { fetchLyrics } = lyricStore;
 
         <div class="text-gray-300 text-[13px] flex">
           <div class="flex">Album</div>
-          <div v-if="album.release_date" class="ml-2 flex">
+          <div class="ml-2 flex">
             <div class="circle mt-2 mr-2" />
             <span class="-ml-0.5">{{ formatDate(album.release_date) }}</span>
           </div>
-          <div v-if="album.tracks" class="ml-2 flex">
+          <div v-if="album.tracks && album.tracks.items" class="ml-2 flex">
             <div class="circle mt-2 mr-2" />
             <span class="-ml-0.5">{{ album.tracks.items.length }} songs</span>
           </div>
@@ -87,7 +88,7 @@ const { fetchLyrics } = lyricStore;
         <div
           class="absolute flex gap-4 items-center justify-start bottom-0 mb-1.5"
         >
-          <button class="p-1 rounded-full bg-white" @click="playFunc()">
+          <button class="p-1 rounded-full bg-white">
             <Play fillColor="#181818" :size="25" />
           </button>
           <button type="button">
@@ -100,7 +101,7 @@ const { fetchLyrics } = lyricStore;
       </div>
     </div>
 
-    <div v-if="album.tracks">
+    <div v-if="album.tracks && album.tracks.items">
       <button
         type="button"
         class="my-4 text-white text-2xl font-semibold hover:underline cursor-pointer"

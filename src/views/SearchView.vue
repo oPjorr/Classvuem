@@ -5,6 +5,7 @@ import { storeToRefs } from "pinia";
 
 import CategorySelect from "../components/CategorySelect.vue";
 
+import { useArtistStore } from "../stores/artist";
 import { useCategoryStore } from "../stores/category";
 import { useSearchStore } from "../stores/search";
 
@@ -20,6 +21,12 @@ const query = ref("Meteo");
 const searchStore = useSearchStore();
 
 const { performAllSearch } = searchStore;
+
+// Testing Spotify Artist API Call
+const artistId = ref("6XyY86QOPPrYVGvF9ch6wz"); // Linkin Park
+const artistStore = useArtistStore();
+
+const { fetchArtist } = artistStore;
 </script>
 
 <template>
@@ -27,8 +34,9 @@ const { performAllSearch } = searchStore;
     <button
       type="button"
       class="text-white text-2xl font-semibold hover:underline cursor-pointer"
-      @click="performAllSearch(query)"
     >
+      <!-- @click="performAllSearch(query)" -->
+      <!-- @click="fetchArtist(artistId)" -->
       Browse all
     </button>
 
@@ -39,7 +47,6 @@ const { performAllSearch } = searchStore;
     >
       <div v-for="(category, i) in categories.items" :key="i">
         <CategorySelect
-          v-if="category.icons"
           :category="category.name"
           :image="category.icons[0].url"
         />
