@@ -1,7 +1,8 @@
 <script setup>
-import uniqolor from "uniqolor";
 import { ref, toRefs } from "vue";
 import { RouterLink } from "vue-router";
+
+import uniqolor from "uniqolor";
 
 let randColor = ref("");
 randColor.value = uniqolor.random();

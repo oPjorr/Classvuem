@@ -12,7 +12,9 @@ export const useLyricStore = defineStore(
         const lyricsResponse = await LyricService.get(track, artist);
         lyrics.value = lyricsResponse.message.body.lyrics.lyrics_body;
 
-        if (lyrics.value === "") {
+        if (lyrics.value) {
+          lyrics.value = lyrics.value.split(/(?<=\.\.\.)\n/g)[0];
+        } else {
           lyrics.value = "Lyrics is unavailable";
         }
 

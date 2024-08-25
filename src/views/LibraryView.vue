@@ -1,5 +1,7 @@
 <script setup>
-import { onMounted, ref, onUnmounted } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
+
+import { storeToRefs } from "pinia";
 
 import ClockTimeThreeOutline from "vue-material-design-icons/ClockTimeThreeOutline.vue";
 import DotsHorizontal from "vue-material-design-icons/DotsHorizontal.vue";
@@ -7,7 +9,6 @@ import Heart from "vue-material-design-icons/Heart.vue";
 import Play from "vue-material-design-icons/Play.vue";
 import SongRow from "../components/SongRow.vue";
 
-import { storeToRefs } from "pinia";
 import { useAlbumStore } from "../stores/album";
 import { useLyricStore } from "../stores/lyric";
 
