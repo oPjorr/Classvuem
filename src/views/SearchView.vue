@@ -8,6 +8,7 @@ import CategorySelect from "../components/CategorySelect.vue";
 import { useArtistStore } from "../stores/artist";
 import { useCategoryStore } from "../stores/category";
 import { useSearchStore } from "../stores/search";
+import { useTrackStore } from "../stores/track";
 
 const categoryStore = useCategoryStore();
 
@@ -17,16 +18,24 @@ const { fetchCategories } = categoryStore;
 onMounted(fetchCategories);
 
 // Testing Spotify Search API Call
-const query = ref("Meteo");
 const searchStore = useSearchStore();
 
+const query = ref("Meteo");
 const { performAllSearch } = searchStore;
 
 // Testing Spotify Artist API Call
-const artistId = ref("6XyY86QOPPrYVGvF9ch6wz"); // Linkin Park
 const artistStore = useArtistStore();
 
+const artistId = ref("6XyY86QOPPrYVGvF9ch6wz"); // Linkin Park
 const { fetchArtist } = artistStore;
+
+// Testing Spotify Track/Recommendations API Call
+const trackStore = useTrackStore();
+
+const trackId = ref("3CLSHJv5aUROAN2vfOyCOh"); // Close Eyes
+const seed_track = ref("2OQJKTtrH482waGFmOfJni");
+const seed_artists = ref(["17lzZA2AlOHwCwFALHttmp", "137W8MRPWKqSmrBGDBFSop"]);
+const { fetchTrack, fetchRecommendations } = trackStore;
 </script>
 
 <template>
@@ -37,6 +46,9 @@ const { fetchArtist } = artistStore;
     >
       <!-- @click="performAllSearch(query)" -->
       <!-- @click="fetchArtist(artistId)" -->
+      <!-- @click="fetchTrack(trackId)" -->
+      <!-- @click="fetchRecommendations(seed_track, seed_artists, 68)" -->
+
       Browse all
     </button>
 

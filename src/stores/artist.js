@@ -11,7 +11,7 @@ export const useArtistStore = defineStore(
       try {
         const artistResponse = await ArtistService.get(artistId);
         artist.value = artistResponse;
-        console.log(artistResponse); // See the results via Console
+        console.log(artistResponse); // See the artist via Console
 
         return Promise.resolve(artistResponse);
       } catch (error) {
