@@ -36,7 +36,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  let authStore = useAuthStore();
+  const authStore = useAuthStore();
 
   if (to.path === "/callback" && to.query.code) {
     authStore.setCode(to.query.code);

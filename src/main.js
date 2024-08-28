@@ -11,6 +11,7 @@ const pinia = createPinia();
 pinia.use(
   createPersistedState({
     storage: sessionStorage,
+    auto: true,
   })
 );
 app.use(pinia);
