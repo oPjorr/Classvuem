@@ -11,7 +11,7 @@
   "dependencies": {
     "axios": "^1.7.4",
     "pinia": "^2.2.2",
-    "pinia-plugin-persistedstate": "^4.0.0-alpha.4",
+    "pinia-plugin-persistedstate": "^3.2.1",
     "uniqolor": "^1.1.1",
     "vue": "^3.4.37",
     "vue-material-design-icons": "^5.3.0",
