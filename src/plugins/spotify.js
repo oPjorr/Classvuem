@@ -1,6 +1,5 @@
 import axios from "axios";
-
-import { useTokenStore } from "../stores/token.js";
+import { useAuthStore } from "../stores/auth";
 
 const spotifyClient = axios.create({
   baseURL: "/api/spotify",
@@ -11,10 +10,12 @@ const spotifyClient = axios.create({
 });
 
 spotifyClient.interceptors.request.use(async (config) => {
-  const tokenStore = useTokenStore();
-  await tokenStore.refreshToken();
+  const authStore = useAuthStore();
 
-  config.headers.Authorization = `Bearer ${tokenStore.token}`;
+  !authStore.token && (await authStore.fetchToken());
+  await authStore.isTokenValid();
+
+  config.headers.Authorization = `${authStore.tokenType} ${authStore.token}`;
 
   return config;
 });

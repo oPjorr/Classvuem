@@ -1,4 +1,4 @@
-"<script setup>
+<script setup>
 import { ref } from "vue";
 
 import ChevronDown from "vue-material-design-icons/ChevronDown.vue";
@@ -67,65 +67,73 @@ const menuItems = ref([
       </div>
 
       <div class="flex items-center space-x-2 ml-6">
-  <router-link 
-    to="/" 
-    class="flex items-center justify-center bg-[#2E2E2E] rounded-full w-[50px] h-[45px] transition-colors duration-300 hover:bg-[#3E3E3E]"
-  >
-    <svg
-      data-encore-id="icon"
-      role="img"
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
-      fill="#D3D3D3"
-      class="flex-shrink-0 m-auto"
-    >
-      <path d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732l7.5-4.33z"></path>
-    </svg>
-  </router-link>
+        <router-link
+          to="/"
+          class="flex items-center justify-center bg-[#2E2E2E] rounded-full w-[50px] h-[45px] transition-colors duration-300 hover:bg-[#3E3E3E]"
+        >
+          <svg
+            data-encore-id="icon"
+            role="img"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            fill="#D3D3D3"
+            class="flex-shrink-0 m-auto"
+          >
+            <path
+              d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732l7.5-4.33z"
+            ></path>
+          </svg>
+        </router-link>
 
-  <div class="flex items-center bg-[#2E2E2E] rounded-full w-[450px] h-[53px] px-3 transition-colors duration-300 hover:bg-[#3E3E3E]">
-    <div class="flex-grow flex items-center">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="icon icon-tabler icon-tabler-search"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke="#A0A0A0"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <circle cx="10" cy="10" r="7" />
-        <line x1="21" y1="21" x2="15" y2="15" />
-      </svg>
-    </div>
-    <input
-      type="text"
-      placeholder="O que você quer ouvir?"
-      class="bg-transparent text-white w-full ml-2 focus:outline-none placeholder-opacity-70"
-    />
+        <div
+          class="flex items-center bg-[#2E2E2E] rounded-full w-[450px] h-[53px] px-3 transition-colors duration-300 hover:bg-[#3E3E3E]"
+        >
+          <div class="flex-grow flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-search"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="#A0A0A0"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <circle cx="10" cy="10" r="7" />
+              <line x1="21" y1="21" x2="15" y2="15" />
+            </svg>
+          </div>
+          <input
+            type="text"
+            placeholder="O que você quer ouvir?"
+            class="bg-transparent text-white w-full ml-2 focus:outline-none placeholder-opacity-70"
+          />
 
-    <div class="flex items-center border-l border-white pl-2">
-  <svg
-    data-encore-id="icon"
-    role="img"
-    aria-hidden="true"
-    viewBox="0 0 24 24"
-    width="24"
-    height="24"
-    fill="#A0A0A0"
-  >
-    <path d="M15 15.5c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"></path>
-    <path d="M1.513 9.37A1 1 0 0 1 2.291 9h19.418a1 1 0 0 1 .979 1.208l-2.339 11a1 1 0 0 1-.978.792H4.63a1 1 0 0 1-.978-.792l-2.339-11a1 1 0 0 1 .201-.837zM3.525 11l1.913 9h13.123l1.913-9H3.525zM4 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4h-2V3H6v3H4V2z"></path>
-  </svg>
-</div>
-  </div>
-</div>
+          <div class="flex items-center border-l border-white pl-2">
+            <svg
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="#A0A0A0"
+            >
+              <path
+                d="M15 15.5c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"
+              ></path>
+              <path
+                d="M1.513 9.37A1 1 0 0 1 2.291 9h19.418a1 1 0 0 1 .979 1.208l-2.339 11a1 1 0 0 1-.978.792H4.63a1 1 0 0 1-.978-.792l-2.339-11a1 1 0 0 1 .201-.837zM3.525 11l1.913 9h13.123l1.913-9H3.525zM4 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4h-2V3H6v3H4V2z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
 
       <button
         @click="openMenu = !openMenu"
@@ -221,4 +229,4 @@ const menuItems = ref([
     <RouterView />
     <div class="mb-[100px]"></div>
   </div>
-</template>"
+</template>
