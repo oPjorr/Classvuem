@@ -4,6 +4,7 @@ import { onMounted, ref } from "vue";
 import { storeToRefs } from "pinia";
 
 import CategorySelect from "../components/CategorySelect.vue";
+import Player from "../components/Player.vue";
 
 import { useArtistStore } from "../stores/artist";
 import { useCategoryStore } from "../stores/category";
@@ -52,6 +53,8 @@ const { fetchTrack, fetchRecommendations } = trackStore;
       Browse all
     </button>
 
+    <div class="py-1.5"></div>
+    <Player />
     <div class="py-1.5"></div>
 
     <div
