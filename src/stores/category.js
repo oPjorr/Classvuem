@@ -9,8 +9,7 @@ export const useCategoryStore = defineStore("category", () => {
     try {
       const categoriesResponse = await CategoryService.get();
       categories.value = categoriesResponse.categories;
-
-      return Promise.resolve(categoriesResponse);
+      console.log(categoriesResponse.categories);
     } catch (error) {
       return Promise.reject(error);
     }
