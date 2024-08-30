@@ -14,9 +14,9 @@ export const usePlayerStore = defineStore("player", () => {
   const authStore = useAuthStore();
 
   function initializePlayer() {
-    if (player.value) {
-      return;
-    }
+    // if (player.value) {
+    //   return;
+    // }
 
     const script = document.createElement("script");
     script.src = "https://sdk.scdn.co/spotify-player.js";
