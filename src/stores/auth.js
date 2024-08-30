@@ -8,7 +8,7 @@ export const useAuthStore = defineStore("auth", () => {
   const refreshToken = ref(null);
   const expiration = ref(null);
   const tokenType = ref("Bearer");
-  const redirectUri = ref("http://localhost:5173/callback");
+  const redirectUri = ref(`${window.location.origin}/callback`);
   const scopes = ref([
     "streaming",
     "user-read-email",
