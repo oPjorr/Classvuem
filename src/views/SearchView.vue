@@ -60,7 +60,7 @@ const { fetchTrack, fetchRecommendations } = trackStore;
     <div
       class="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6"
     >
-      <div v-for="(category, i) in categories.items" :key="i">
+      <div v-for="(category, i) in categories?.items" :key="i">
         <CategorySelect
           :category="category.name"
           :image="category.icons[0].url"

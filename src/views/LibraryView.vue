@@ -81,7 +81,9 @@ const { fetchLyrics } = lyricStore;
           </div>
           <div v-if="album.tracks && album.tracks.items" class="ml-2 flex">
             <div class="circle mt-2 mr-2" />
-            <span class="-ml-0.5">{{ album.tracks.items.length }} songs</span>
+            <span class="-ml-0.5"
+              >{{ album?.tracks?.items?.length }} songs</span
+            >
           </div>
         </div>
 
@@ -107,8 +109,8 @@ const { fetchLyrics } = lyricStore;
         class="my-4 text-white text-2xl font-semibold hover:underline cursor-pointer"
         @click="
           fetchLyrics(
-            album.tracks.items[0].name,
-            album.tracks.items[0].artists[0].name
+            album?.tracks?.items[0]?.name,
+            album?.tracks?.items[0]?.artists[0]?.name
           )
         "
       >
@@ -131,7 +133,7 @@ const { fetchLyrics } = lyricStore;
     <div v-if="album.tracks">
       <ul
         class="w-full"
-        v-for="(track, index) in album.tracks.items"
+        v-for="(track, index) in album?.tracks?.items"
         :key="track"
       >
         <SongRow :artist="track.artists[0]" :track="track" :index="++index" />
